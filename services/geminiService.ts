@@ -1,7 +1,9 @@
 import { GoogleGenAI } from "@google/genai";
 
 const getClient = () => {
-    const apiKey = process.env.API_KEY || '';
+    // Safety check: ensure process is defined before accessing it to prevent browser crashes
+    const apiKey = (typeof process !== 'undefined' && process.env && process.env.API_KEY) ? process.env.API_KEY : '';
+    
     if (!apiKey) {
         console.warn("API Key not found in environment.");
     }
@@ -9,8 +11,10 @@ const getClient = () => {
 };
 
 export const generateBlogPost = async (topic: string, tone: string = 'professional'): Promise<{ title: string; content: string; excerpt: string } | null> => {
+    // Check for API key before creating client to avoid unnecessary errors
+    if (typeof process !== 'undefined' && process.env && !process.env.API_KEY) return null;
+
     const ai = getClient();
-    if (!process.env.API_KEY) return null;
 
     try {
         const model = 'gemini-2.5-flash';
@@ -45,8 +49,9 @@ export const generateBlogPost = async (topic: string, tone: string = 'profession
 };
 
 export const generateSEOMeta = async (pageContent: string): Promise<{ title: string; description: string } | null> => {
+    if (typeof process !== 'undefined' && process.env && !process.env.API_KEY) return null;
+    
     const ai = getClient();
-    if (!process.env.API_KEY) return null;
 
     try {
         const response = await ai.models.generateContent({
