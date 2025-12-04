@@ -4,7 +4,7 @@ import { useWebsite } from '../context/WebsiteContext';
 import { Menu, X, Facebook, Instagram, Linkedin, Youtube, Phone, Mail, MapPin } from 'lucide-react';
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const { settings, isAdminMode, toggleAdminMode } = useWebsite();
+  const { settings } = useWebsite();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
 
@@ -19,16 +19,6 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
   return (
     <div className="min-h-screen flex flex-col font-sans bg-slate-900 text-slate-100 overflow-x-hidden">
-      {/* Sticky Admin Toggle */}
-      <div className="fixed top-28 right-4 z-50">
-         <button 
-           onClick={toggleAdminMode}
-           className="bg-red-600/80 hover:bg-red-500 text-white text-xs px-2 py-1 rounded-full shadow-lg backdrop-blur-sm transition-colors"
-         >
-            {isAdminMode ? 'Exit Admin' : 'Admin Login'}
-         </button>
-      </div>
-
       {/* Navigation */}
       <nav className="sticky top-0 z-40 w-full backdrop-blur-md bg-slate-900/90 border-b border-slate-800 shadow-xl transition-all duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
