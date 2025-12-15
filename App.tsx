@@ -11,6 +11,7 @@ import Blog from './pages/Blog';
 import About from './pages/About';
 import Special from './pages/Special';
 import Contact from './pages/Contact';
+import Portfolio from './pages/Portfolio';
 
 // Admin Pages
 import { AdminDashboardHome, AdminBlogManager, AdminSettings } from './pages/AdminDashboard';
@@ -36,6 +37,7 @@ const AppRoutes: React.FC = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/services" element={<Services />} />
+        <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/about" element={<About />} />
         <Route path="/special" element={<Special />} />

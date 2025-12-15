@@ -12,6 +12,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     { label: 'Home', path: '/' },
     { label: 'About', path: '/about' },
     { label: 'Services', path: '/services' },
+    { label: 'Portfolio', path: '/portfolio' },
     { label: 'Special Package', path: '/special' },
     { label: 'Blog', path: 'https://webhousemedia.blogspot.com/' },
     { label: 'Contact', path: '/contact' },
