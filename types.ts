@@ -36,17 +36,13 @@ export interface SiteSettings {
   seoDescription: string;
 }
 
-export interface NavigationItem {
-  label: string;
-  path: string;
-}
-
 export enum PageType {
   HOME = 'HOME',
   ABOUT = 'ABOUT',
-  SERVICES = 'SERVICES',
-  SPECIAL = 'SPECIAL',
-  BLOG = 'BLOG',
+  STRATEGY = 'STRATEGY',
+  PRESENCE = 'PRESENCE',
+  MARKETING = 'MARKETING',
+  PORTFOLIO = 'PORTFOLIO',
   CONTACT = 'CONTACT',
   ADMIN = 'ADMIN'
 }

@@ -6,12 +6,13 @@ import AdminLayout from './components/AdminLayout';
 
 // Public Pages
 import Home from './pages/Home';
-import Services from './pages/Services';
 import Blog from './pages/Blog';
 import About from './pages/About';
-import Special from './pages/Special';
 import Contact from './pages/Contact';
 import Portfolio from './pages/Portfolio';
+import GrowthStrategy from './pages/GrowthStrategy';
+import DigitalPresence from './pages/DigitalPresence';
+import MarketingSystems from './pages/MarketingSystems';
 
 // Admin Pages
 import { AdminDashboardHome, AdminBlogManager, AdminSettings } from './pages/AdminDashboard';
@@ -36,14 +37,15 @@ const AppRoutes: React.FC = () => {
     <Layout>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/services" element={<Services />} />
+        <Route path="/solutions/growth" element={<GrowthStrategy />} />
+        <Route path="/solutions/presence" element={<DigitalPresence />} />
+        <Route path="/solutions/marketing" element={<MarketingSystems />} />
         <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/about" element={<About />} />
-        <Route path="/special" element={<Special />} />
         <Route path="/contact" element={<Contact />} />
-        {/* Redirect admin routes to home if not in admin mode */}
         <Route path="/admin/*" element={<Navigate to="/" replace />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Layout>
   );
