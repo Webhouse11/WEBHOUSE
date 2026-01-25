@@ -6,16 +6,18 @@ import AdminLayout from './components/AdminLayout';
 
 // Public Pages
 import Home from './pages/Home';
-import Blog from './pages/Blog';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Portfolio from './pages/Portfolio';
-import GrowthStrategy from './pages/GrowthStrategy';
-import DigitalPresence from './pages/DigitalPresence';
-import MarketingSystems from './pages/MarketingSystems';
+import ProgrammingAI from './pages/ProgrammingAI';
+import DigitalSales from './pages/DigitalSales';
+import BrandingSystems from './pages/BrandingSystems';
+import SocialMediaSystems from './pages/SocialMediaSystems';
+import AuthorStorytelling from './pages/AuthorStorytelling';
+import Services from './pages/Services';
 
 // Admin Pages
-import { AdminDashboardHome, AdminBlogManager, AdminSettings } from './pages/AdminDashboard';
+import { AdminDashboardHome, AdminSettings } from './pages/AdminDashboard';
 
 const AppRoutes: React.FC = () => {
   const { isAdminMode } = useWebsite();
@@ -25,7 +27,6 @@ const AppRoutes: React.FC = () => {
       <AdminLayout>
         <Routes>
           <Route path="/admin" element={<AdminDashboardHome />} />
-          <Route path="/admin/blog" element={<AdminBlogManager />} />
           <Route path="/admin/settings" element={<AdminSettings />} />
           <Route path="*" element={<Navigate to="/admin" replace />} />
         </Routes>
@@ -37,11 +38,13 @@ const AppRoutes: React.FC = () => {
     <Layout>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/solutions/growth" element={<GrowthStrategy />} />
-        <Route path="/solutions/presence" element={<DigitalPresence />} />
-        <Route path="/solutions/marketing" element={<MarketingSystems />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/services/programming-ai" element={<ProgrammingAI />} />
+        <Route path="/services/digital-sales" element={<DigitalSales />} />
+        <Route path="/services/branding" element={<BrandingSystems />} />
+        <Route path="/services/social-media" element={<SocialMediaSystems />} />
+        <Route path="/services/storytelling" element={<AuthorStorytelling />} />
         <Route path="/portfolio" element={<Portfolio />} />
-        <Route path="/blog" element={<Blog />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/admin/*" element={<Navigate to="/" replace />} />

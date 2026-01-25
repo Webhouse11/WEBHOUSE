@@ -3,26 +3,46 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>WEBHOUSE MEDIA | Digital Strategy & Growth Architecture</title>
+    <title>WEBHOUSE MEDIA | Global Digital Systems & Growth Studio</title>
     <link rel="icon" href="data:,">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script>
       tailwind.config = {
         darkMode: 'class',
         theme: {
           extend: {
             fontFamily: {
-              sans: ['Inter', 'sans-serif'],
+              sans: ['Plus Jakarta Sans', 'sans-serif'],
               display: ['Space Grotesk', 'sans-serif'],
             },
             colors: {
               brand: {
-                dark: '#020617',
-                surface: '#0f172a',
-                border: '#1e293b',
-                primary: '#94a3b8',
+                dark: '#050505',
+                surface: '#0A0A0A',
+                border: '#1A1A1A',
                 accent: '#6366f1',
+                cyan: '#06b6d4',
+              }
+            },
+            animation: {
+              'marquee': 'marquee 40s linear infinite',
+              'marquee-slow': 'marquee 60s linear infinite',
+              'float': 'float 6s ease-in-out infinite',
+              'pulse-soft': 'pulse-soft 4s ease-in-out infinite',
+            },
+            keyframes: {
+              marquee: {
+                '0%': { transform: 'translateX(0%)' },
+                '100%': { transform: 'translateX(-50%)' },
+              },
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-20px)' },
+              },
+              'pulse-soft': {
+                '0%, 100%': { opacity: 0.4 },
+                '50%': { opacity: 0.8 },
               }
             }
           }
@@ -31,33 +51,47 @@
     </script>
     <style>
       body {
-        background-color: #020617;
+        background-color: #050505;
         color: #94a3b8;
         -webkit-font-smoothing: antialiased;
         scroll-behavior: smooth;
+        overflow-x: hidden;
       }
       .glass {
-        background: rgba(15, 23, 42, 0.6);
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
+        background: rgba(10, 10, 10, 0.7);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
       }
       .text-gradient {
-        background: linear-gradient(135deg, #ffffff 0%, #94a3b8 100%);
+        background: linear-gradient(135deg, #ffffff 0%, #a5b4fc 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
-      /* Custom scrollbar */
-      ::-webkit-scrollbar { width: 6px; }
-      ::-webkit-scrollbar-track { background: #020617; }
-      ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
+      .text-gradient-accent {
+        background: linear-gradient(135deg, #6366f1 0%, #06b6d4 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      ::-webkit-scrollbar { width: 4px; }
+      ::-webkit-scrollbar-track { background: #050505; }
+      ::-webkit-scrollbar-thumb { background: #1A1A1A; border-radius: 10px; }
       ::-webkit-scrollbar-thumb:hover { background: #334155; }
       
-      @keyframes slow-pan {
-        from { transform: scale(1); }
-        to { transform: scale(1.1); }
+      .grid-pattern {
+        background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.03) 1px, transparent 0);
+        background-size: 40px 40px;
       }
-      .animate-slow-pan {
-        animation: slow-pan 20s ease-in-out infinite alternate;
+
+      .bento-card {
+        background: linear-gradient(180deg, rgba(26,26,26,0.3) 0%, rgba(10,10,10,0.5) 100%);
+        border: 1px solid rgba(255,255,255,0.05);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .bento-card:hover {
+        border-color: rgba(99, 102, 241, 0.3);
+        background: linear-gradient(180deg, rgba(30,30,30,0.4) 0%, rgba(15,15,15,0.6) 100%);
+        transform: translateY(-4px);
       }
     </style>
   <script type="importmap">

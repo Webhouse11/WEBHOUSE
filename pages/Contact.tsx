@@ -1,7 +1,20 @@
-
 import React from 'react';
 import { Mail, Phone, MapPin, MessageCircle, Facebook, Instagram, Youtube, Linkedin, ExternalLink } from 'lucide-react';
 import { useWebsite } from '../context/WebsiteContext';
+
+const WHATSAPP_MESSAGE = `👋 Hello! Welcome to Webhouse Media & Marketing Studio.
+Thank you for reaching out. We’re excited to help you build, automate, and grow your business digitally.
+To help us serve you faster, please tell us:
+1️⃣ Are you interested in Website & App Development?
+2️⃣ Digital Sales & Marketing Systems?
+3️⃣ Graphic & Business Branding?
+4️⃣ Social Media Management?
+5️⃣ Or Other Inquiries?
+📌 One of our team members will get back to you within a few minutes.
+While you wait, you can also check our services here: 🚀 https://webhousemedia.vercel.app/
+Thank you for choosing Webhouse Media & Marketing Studio – where ideas become systems, and systems become results!`;
+
+const WHATSAPP_URL = `https://wa.me/2348152469749?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 
 const Contact: React.FC = () => {
   const { settings } = useWebsite();
@@ -94,7 +107,7 @@ const Contact: React.FC = () => {
                     <div>
                         <h3 className="text-lg font-bold text-white mb-1">Call Us</h3>
                         <a 
-                            href="https://wa.link/ci28mh" 
+                            href={WHATSAPP_URL}
                             target="_blank" 
                             rel="noopener noreferrer"
                             className="text-slate-400 hover:text-cyan-400 transition-colors block"
@@ -111,7 +124,7 @@ const Contact: React.FC = () => {
                     <div>
                         <h3 className="text-lg font-bold text-white mb-1">WhatsApp Chat</h3>
                         <a 
-                        href="https://wa.link/ci28mh" 
+                        href={WHATSAPP_URL}
                         target="_blank" 
                         rel="noopener noreferrer" 
                         className="text-slate-400 hover:text-green-400 transition-colors block"

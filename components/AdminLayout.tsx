@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useWebsite } from '../context/WebsiteContext';
-import { LayoutDashboard, FileText, Settings, LogOut, Globe, PenTool } from 'lucide-react';
+import { LayoutDashboard, Settings, LogOut, Globe } from 'lucide-react';
 
 const AdminLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { toggleAdminMode } = useWebsite();
@@ -9,7 +9,6 @@ const AdminLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
   const menuItems = [
     { label: 'Dashboard', path: '/admin', icon: LayoutDashboard },
-    { label: 'Blog Manager', path: '/admin/blog', icon: FileText },
     { label: 'Site Settings', path: '/admin/settings', icon: Settings },
   ];
 

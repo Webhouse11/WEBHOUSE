@@ -1,102 +1,151 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Layout, Target, Zap } from 'lucide-react';
+import { ArrowUpRight, Target, Zap, Globe, Shield, Bot, Code, Palette, ChevronRight } from 'lucide-react';
 
-const projects = [
+const cases = [
   {
     id: 1,
-    title: "E-Commerce Growth Engine",
-    category: "Strategic Strategy",
-    client: "Global Retail House",
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?auto=format&fit=crop&q=80&w=1600",
-    outcome: "350% Increase in Predictable Revenue",
-    description: "Re-engineering a failing funnel into a high-intent customer acquisition system using AI-led targeting."
+    title: "Global Logistics AI Ecosystem",
+    category: "AI & Programming",
+    client: "Nexus Freight Solutions",
+    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1600",
+    outcome: "40% Operational Efficiency Gain",
+    description: "Architected a custom enterprise dashboard with predictive AI to automate route optimization and fleet tracking.",
+    tags: ["Custom SaaS", "AI Automation", "React Native"]
   },
   {
     id: 2,
-    title: "Luxury Real Estate Ecosystem",
-    category: "Digital Presence",
-    client: "Metropolis Realty Group",
+    title: "High-Ticket Sales Architecture",
+    category: "Digital Sales Systems",
+    client: "Elite Realty Group",
     image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=1600",
-    outcome: "50+ High-Net-Worth Leads Monthly",
-    description: "A conversion-first digital bridge designed to build deep credibility before the first contact."
+    outcome: "+350k Revenue in Quarter 1",
+    description: "Replaced a static brochure site with a high-intent narrative funnel and automated lead nurturing system.",
+    tags: ["Sales Funnel", "CRM Integration", "Lead Gen"]
   },
   {
     id: 3,
-    title: "FinTech Authority Launch",
-    category: "Marketing Systems",
-    client: "NeoBank International",
+    title: "FinTech Narrative Rebrand",
+    category: "Branding & Storytelling",
+    client: "NeoCapital Finance",
     image: "https://images.unsplash.com/photo-1559136555-930d72f1d302?auto=format&fit=crop&q=80&w=1600",
-    outcome: "10k+ Pre-Launch Applications",
-    description: "Visibility systems architected to establish instant trust in a highly competitive market."
+    outcome: "Global Authority Status",
+    description: "Complete visual identity and brand legend architecture to position a startup as a global industry leader.",
+    tags: ["Executive Branding", "Narrative Strategy", "Identity"]
+  },
+  {
+    id: 4,
+    title: "HealthTech Automation Bot",
+    category: "AI Business Automation",
+    client: "VitaHealth Clinics",
+    image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=1600",
+    outcome: "98% Patient Query Resolution",
+    description: "Deployed an intelligent LLM-powered assistant to handle appointment booking and triage across 12 locations.",
+    tags: ["LLM Integration", "Customer Support", "Automation"]
   }
 ];
 
 const Portfolio: React.FC = () => {
   return (
     <div className="bg-brand-dark min-h-screen">
-      {/* Header */}
-      <section className="relative py-40 overflow-hidden border-b border-slate-900">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 text-center space-y-8">
-            <h1 className="text-5xl md:text-8xl font-display font-light text-white tracking-tight">
-               Selected <span className="italic font-normal text-gradient">Architectures.</span>
+      {/* Header Section */}
+      <section className="relative pt-48 pb-32 overflow-hidden border-b border-white/5 grid-pattern">
+        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-indigo-600/5 rounded-full blur-[120px] pointer-events-none animate-pulse-soft"></div>
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="flex flex-col items-center text-center space-y-8">
+            <span className="text-[10px] font-black uppercase tracking-[0.5em] text-indigo-500">Case Studies</span>
+            <h1 className="text-6xl md:text-9xl font-display font-bold text-white tracking-tighter leading-[0.9]">
+              Selected <span className="text-gradient italic">Architectures.</span>
             </h1>
-            <p className="text-xl text-slate-500 max-w-2xl mx-auto leading-relaxed font-light">
-               A showcase of strategic depth and execution excellence. We focus on results that move the needle.
+            <p className="text-xl md:text-2xl text-slate-500 max-w-3xl mx-auto leading-relaxed font-light">
+              A curated showcase of technical precision and strategic results. We don't just build; we solve complex global business challenges.
             </p>
+          </div>
         </div>
       </section>
 
-      {/* Grid */}
-      <section className="py-32 max-w-7xl mx-auto px-6 lg:px-12 space-y-32">
-        {projects.map((project, index) => (
-          <div key={project.id} className={`flex flex-col ${index % 2 === 1 ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-20 items-center`}>
-            <div className="w-full lg:w-3/5 group relative overflow-hidden rounded-[40px] border border-slate-800 shadow-2xl">
-              <img 
-                src={project.image} 
-                alt={project.title} 
-                className="w-full aspect-[16/9] object-cover transition-transform duration-1000 group-hover:scale-105" 
-              />
-              <div className="absolute inset-0 bg-brand-dark/20 group-hover:bg-brand-dark/0 transition-colors duration-500"></div>
-            </div>
-            
-            <div className="w-full lg:w-2/5 space-y-8">
-              <div className="space-y-4">
-                <span className="text-xs font-bold text-indigo-400 uppercase tracking-[0.4em]">{project.category}</span>
-                <h3 className="text-4xl font-display text-white leading-tight font-light">{project.title}</h3>
-                <p className="text-slate-500 text-lg leading-relaxed">{project.description}</p>
+      {/* Cases Gallery */}
+      <section className="py-32 max-w-7xl mx-auto px-6 lg:px-12">
+        <div className="grid md:grid-cols-2 gap-12">
+          {cases.map((project) => (
+            <div key={project.id} className="group bento-card rounded-[48px] overflow-hidden flex flex-col">
+              {/* Image Box */}
+              <div className="relative h-[400px] overflow-hidden">
+                <img 
+                  src={project.image} 
+                  alt={project.title} 
+                  className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" 
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-transparent to-transparent opacity-60"></div>
+                
+                {/* Overlay Badge */}
+                <div className="absolute bottom-8 left-8 flex flex-wrap gap-2">
+                  {project.tags.map(tag => (
+                    <span key={tag} className="px-4 py-2 bg-white/5 backdrop-blur-md border border-white/10 rounded-full text-[10px] font-bold text-white uppercase tracking-widest">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
 
-              <div className="p-8 bg-slate-900/40 border border-slate-800 rounded-3xl">
-                <p className="text-xs font-bold text-slate-600 uppercase tracking-widest mb-3">Core Outcome</p>
-                <p className="text-2xl text-white font-display italic">{project.outcome}</p>
-              </div>
+              {/* Content Box */}
+              <div className="p-12 space-y-8 flex-grow">
+                <div className="space-y-4">
+                  <div className="flex justify-between items-start">
+                    <span className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-600">
+                      {project.category} — {project.client}
+                    </span>
+                  </div>
+                  <h3 className="text-3xl md:text-4xl font-display font-bold text-white tracking-tight leading-tight">
+                    {project.title}
+                  </h3>
+                  <p className="text-slate-500 text-lg font-light leading-relaxed">
+                    {project.description}
+                  </p>
+                </div>
 
-              <Link to="/contact" className="inline-flex items-center gap-3 text-white font-bold uppercase tracking-widest text-xs border-b border-indigo-500 pb-2 hover:gap-6 transition-all">
-                Project Consultation <ArrowRight size={14} />
-              </Link>
+                {/* Outcome Highlight */}
+                <div className="p-8 bg-indigo-500/5 border border-indigo-500/10 rounded-3xl group-hover:border-indigo-500/30 transition-colors">
+                  <p className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] mb-3 flex items-center gap-2">
+                    <Target size={14} className="text-indigo-400" /> Core Result
+                  </p>
+                  <p className="text-2xl text-white font-display font-bold italic tracking-tight">
+                    {project.outcome}
+                  </p>
+                </div>
+
+                <Link to="/contact" className="inline-flex items-center gap-2 text-white text-[10px] font-black uppercase tracking-widest group-hover:gap-4 transition-all pb-1 border-b border-transparent group-hover:border-indigo-500 w-fit">
+                  Analyze Success Blueprint <ChevronRight size={14} />
+                </Link>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-40 bg-slate-950 px-6 border-y border-slate-900">
-         <div className="max-w-4xl mx-auto text-center space-y-12">
-            <h2 className="text-4xl md:text-6xl font-display text-white font-light">Architect your next chapter.</h2>
-            <p className="text-xl text-slate-500 font-light max-w-2xl mx-auto">
-               We work with a limited number of clients per quarter to ensure focused strategic attention.
-            </p>
-            <div className="pt-6">
-              <Link 
-                to="/contact" 
-                className="px-14 py-7 bg-white text-brand-dark font-bold rounded-2xl hover:scale-105 transition-all uppercase tracking-widest text-sm inline-flex items-center gap-4 shadow-2xl"
-              >
-                Start Your Strategy Session
-                <ArrowRight size={18} />
-              </Link>
-            </div>
-         </div>
+      {/* Final Callout */}
+      <section className="py-40 bg-brand-surface border-y border-white/5 px-6 lg:px-12 text-center relative overflow-hidden">
+        <div className="absolute top-0 right-0 p-20 opacity-5 pointer-events-none">
+          <Zap size={300} className="text-indigo-500" />
+        </div>
+        <div className="max-w-4xl mx-auto space-y-12 relative z-10">
+          <h2 className="text-4xl md:text-7xl font-display font-bold text-white tracking-tighter leading-tight">
+            Ready to be our next <br />
+            <span className="text-gradient italic">Global Success?</span>
+          </h2>
+          <p className="text-xl text-slate-500 font-light max-w-2xl mx-auto">
+            We operate with a high-intensity focus, working with a limited number of ambitious partners per quarter to ensure architectural excellence.
+          </p>
+          <div className="pt-8">
+            <Link 
+              to="/contact" 
+              className="group inline-flex items-center gap-4 px-12 py-6 bg-white text-brand-dark font-black rounded-full hover:scale-105 transition-all uppercase tracking-widest text-sm shadow-2xl"
+            >
+              Start Project Inquiry
+              <ArrowUpRight size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+            </Link>
+          </div>
+        </div>
       </section>
     </div>
   );

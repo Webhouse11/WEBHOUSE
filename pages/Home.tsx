@@ -1,235 +1,406 @@
-import React, { useState, useEffect } from 'react';
-import { ArrowRight, CheckCircle, Layout, Target, TrendingUp, ChevronLeft, ChevronRight, Zap } from 'lucide-react';
+import React, { useState, useEffect, useCallback } from 'react';
+import { ArrowUpRight, Code, TrendingUp, Palette, Zap, Feather, Globe, Users, CheckCircle, Quote, Bot, Sparkles, Monitor, Layers, MousePointer2, ChevronRight, ChevronLeft, MessageCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
+
+const SLIDE_DURATION = 6000;
+
+const WHATSAPP_MESSAGE = `👋 Hello! I'm interested in working with Webhouse Media. I'd like to discuss a project.`;
+const WHATSAPP_URL = `https://wa.me/2348152469749?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 
 const slides = [
   {
-    title: "Architecting Digital Clarity",
-    subtitle: "Strategic Foundations",
-    description: "Before we click a button, we define your success. We align your business ambition with intelligent digital blueprints.",
-    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2000",
-    cta: "The Growth Strategy",
-    link: "/solutions/growth"
+    id: 1,
+    accent: "text-indigo-400",
+    bg: "bg-indigo-600/10",
+    pill: "Intelligent Digital Architecture",
+    title: "Systems for <span class='text-gradient'>Unlimited</span> Digital Growth.",
+    desc: "We architect high-performance digital systems and AI-powered automation for global brands seeking structural excellence.",
+    cta: "Start Project",
+    link: "/contact",
+    icon: Globe
   },
   {
-    title: "High-Performance Ecosystems",
-    subtitle: "Digital Presence",
-    description: "Your website should be your best salesperson. We build conversion-first architectures that turn strangers into loyal clients.",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=2000",
-    cta: "Digital Presence",
-    link: "/solutions/presence"
+    id: 2,
+    accent: "text-cyan-400",
+    bg: "bg-cyan-600/10",
+    pill: "Programming & AI Automation",
+    title: "Code that <span class='text-gradient-accent'>Scales</span>. AI that Thinks.",
+    desc: "Deploying enterprise-grade SaaS, custom portals, and predictive AI models that replace manual stress with automated precision.",
+    cta: "Explore Tech",
+    link: "/services/programming-ai",
+    icon: Code
   },
   {
-    title: "Predictable Revenue Systems",
-    subtitle: "Marketing Intelligence",
-    description: "Replacing guesswork with visibility systems. We manage your authority and nurture your leads with precision.",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=2000",
-    cta: "Marketing Systems",
-    link: "/solutions/marketing"
+    id: 3,
+    accent: "text-emerald-400",
+    bg: "bg-emerald-600/10",
+    pill: "Digital Sales Systems",
+    title: "Predicted <span class='text-emerald-400'>Growth</span>. Architected Funnels.",
+    desc: "Stop guessing. We build conversion-optimized sales engines that turn traffic into predictable, high-ticket revenue pipelines.",
+    cta: "Build Funnel",
+    link: "/services/digital-sales",
+    icon: TrendingUp
+  },
+  {
+    id: 4,
+    accent: "text-rose-400",
+    bg: "bg-rose-600/10",
+    pill: "Author & Storytelling",
+    title: "Words that <span class='text-rose-400 italic'>Command</span> Attention.",
+    desc: "Logic makes people think, but stories make people act. We architect emotional brand legends that drive deep audience loyalty.",
+    cta: "Our Method",
+    link: "/services/storytelling",
+    icon: Feather
+  },
+  {
+    id: 5,
+    accent: "text-amber-400",
+    bg: "bg-amber-600/10",
+    pill: "Global Branding Systems",
+    title: "Identity <span class='text-amber-400'>Engineered</span>. Trust Built.",
+    desc: "Premium visual storytelling and 24/7 visibility systems designed to position your brand as a global market authority.",
+    cta: "View Cases",
+    link: "/portfolio",
+    icon: Palette
   }
 ];
 
 const Home: React.FC = () => {
+  const [counts, setCounts] = useState({ projects: 0, clients: 0, countries: 0 });
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 8000);
-    return () => clearInterval(timer);
+    const interval = setInterval(() => {
+      setCounts(prev => ({
+        projects: Math.min(1200, prev.projects + 12),
+        clients: Math.min(800, prev.clients + 8),
+        countries: Math.min(20, prev.countries + 1)
+      }));
+    }, 40);
+    return () => clearInterval(interval);
   }, []);
 
-  return (
-    <div className="flex flex-col">
-      {/* Premium Hero Slider */}
-      <section className="relative h-[95vh] w-full bg-brand-dark overflow-hidden">
-        {slides.map((slide, index) => (
-          <div
-            key={index}
-            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-              index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'
-            }`}
-          >
-            {/* Background Image with Pan effect */}
-            <div className="absolute inset-0">
-              <img
-                src={slide.image}
-                alt={slide.title}
-                className="w-full h-full object-cover animate-slow-pan opacity-40 brightness-50"
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-brand-dark via-brand-dark/80 to-transparent"></div>
-            </div>
+  const nextSlide = useCallback(() => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+  }, []);
 
-            {/* Content */}
-            <div className="relative h-full max-w-7xl mx-auto px-6 lg:px-12 flex items-center">
-              <div className="max-w-3xl space-y-8">
-                <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md">
-                  <span className="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>
-                  <span className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-slate-300">
-                    {slide.subtitle}
-                  </span>
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  };
+
+  useEffect(() => {
+    if (isPaused) return;
+    const timer = setInterval(nextSlide, SLIDE_DURATION);
+    return () => clearInterval(timer);
+  }, [isPaused, nextSlide]);
+
+  const bentoServices = [
+    {
+      id: 1,
+      title: "Programming & AI Automation",
+      subtitle: "Custom SaaS, Enterprise Portals & AI Ops",
+      description: "High-end websites, apps, and predictive AI systems designed to automate your business operations and reduce manual overhead.",
+      icon: Code,
+      link: "/services/programming-ai",
+      span: "md:col-span-2",
+      bg: "bg-indigo-500/10",
+      accent: "text-indigo-400"
+    },
+    {
+      id: 2,
+      title: "Digital Sales Architect",
+      subtitle: "High-Intent Lead Engines",
+      description: "Predictable digital growth via conversion-optimized funnel systems.",
+      icon: TrendingUp,
+      link: "/services/digital-sales",
+      span: "md:col-span-1",
+      bg: "bg-emerald-500/10",
+      accent: "text-emerald-400"
+    },
+    {
+      id: 3,
+      title: "Author & Storytelling",
+      subtitle: "Narrative Sales Engines",
+      description: "Architecting emotional legends and high-authority brand stories that convert.",
+      icon: Feather,
+      link: "/services/storytelling",
+      span: "md:col-span-1",
+      bg: "bg-rose-500/10",
+      accent: "text-rose-400"
+    },
+    {
+      id: 4,
+      title: "Graphic & Branding",
+      subtitle: "Visual Identity Systems",
+      description: "Premium visual storytelling for global credibility and market authority.",
+      icon: Palette,
+      link: "/services/branding",
+      span: "md:col-span-1",
+      bg: "bg-amber-500/10",
+      accent: "text-amber-400"
+    },
+    {
+      id: 5,
+      title: "Social Visibility Systems",
+      subtitle: "24/7 Authority Management",
+      description: "Content planning and visibility systems to maintain your global brand relevance.",
+      icon: Zap,
+      link: "/services/social-media",
+      span: "md:col-span-1",
+      bg: "bg-cyan-500/10",
+      accent: "text-cyan-400"
+    }
+  ];
+
+  const testimonials = [
+    { name: "Sarah Jenkins", country: "UK", feedback: "The AI automation system Webhouse built for our logistics has saved us 40 hours of manual work every week." },
+    { name: "Olawale Bakare", country: "Nigeria", feedback: "Webhouse doesn't just design websites; they build digital sales engines. Our ROI tripled in six months." },
+    { name: "David Miller", country: "USA", feedback: "The branding system created for our startup gave us instant credibility in a crowded New York market." },
+    { name: "Elena Schmidt", country: "Germany", feedback: "Their social media systems are flawless. We finally have a consistent global voice across all channels." },
+    { name: "Ahmed Al-Farsi", country: "UAE", feedback: "High-tech, professional, and very strategic. The custom dashboard they built is now central to our operations." },
+    { name: "James Thompson", country: "Australia", feedback: "Incredible attention to detail. Their funnel architecture is the best we've seen in the industry." },
+  ];
+
+  return (
+    <div className="flex flex-col bg-brand-dark overflow-x-hidden">
+      
+      {/* --- HERO SLIDER SECTION --- */}
+      <section 
+        className="relative h-screen min-h-[800px] flex items-center px-6 lg:px-12 grid-pattern overflow-hidden"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+      >
+        {/* Animated Background Blobs that shift per slide */}
+        <div className={`absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full blur-[150px] transition-all duration-[2000ms] pointer-events-none opacity-40 ${slides[currentSlide].bg}`}></div>
+        <div className={`absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full blur-[130px] transition-all duration-[2000ms] pointer-events-none opacity-30 ${slides[currentSlide].bg}`}></div>
+        
+        <div className="relative z-10 max-w-7xl mx-auto w-full">
+          {slides.map((slide, index) => (
+            <div 
+              key={slide.id} 
+              className={`transition-all duration-1000 absolute inset-0 flex items-center ${
+                index === currentSlide ? 'opacity-100 translate-y-0 relative' : 'opacity-0 translate-y-12 pointer-events-none'
+              }`}
+            >
+              <div className="flex flex-col items-center text-center space-y-12 w-full">
+                <div className={`inline-flex items-center gap-3 px-5 py-2.5 rounded-full border border-white/5 bg-white/5 backdrop-blur-md animate-in slide-in-from-bottom duration-700`}>
+                  <slide.icon className={`w-4 h-4 ${slide.accent} animate-pulse`} />
+                  <span className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-300">{slide.pill}</span>
                 </div>
                 
-                <h1 className="text-5xl md:text-8xl font-display font-light text-white leading-[1.05] tracking-tight">
-                  {slide.title.split(' ').map((word, i) => 
-                    word === 'Digital' || word === 'Revenue' || word === 'Clarity' 
-                      ? <span key={i} className="italic font-normal text-gradient"> {word} </span> 
-                      : <span key={i}> {word} </span>
-                  )}
-                </h1>
+                <h1 
+                  className="text-5xl md:text-8xl lg:text-[120px] font-display font-bold text-white leading-[0.9] tracking-tighter max-w-6xl animate-in slide-in-from-bottom duration-1000 delay-100"
+                  dangerouslySetInnerHTML={{ __html: slide.title }}
+                />
                 
-                <p className="text-lg md:text-2xl text-slate-400 leading-relaxed font-light">
-                  {slide.description}
+                <p className="text-lg md:text-2xl text-slate-400 max-w-3xl leading-relaxed font-light animate-in slide-in-from-bottom duration-1000 delay-200">
+                  {slide.desc}
                 </p>
 
-                <div className="flex flex-col sm:flex-row gap-6 pt-4">
-                  <Link 
-                    to="/contact" 
-                    className="px-10 py-5 bg-white text-brand-dark font-bold text-sm rounded-xl hover:bg-slate-200 transition-all flex items-center justify-center gap-3 uppercase tracking-widest shadow-2xl shadow-white/5"
-                  >
-                    Start With Clarity
-                    <ArrowRight size={18} />
-                  </Link>
+                <div className="flex flex-col sm:flex-row gap-6 pt-8 animate-in slide-in-from-bottom duration-1000 delay-300">
                   <Link 
                     to={slide.link} 
-                    className="px-10 py-5 border border-white/10 text-white font-medium text-sm rounded-xl hover:bg-white/5 transition-all flex items-center justify-center uppercase tracking-widest backdrop-blur-sm"
+                    className="group px-12 py-6 bg-white text-brand-dark font-black text-sm rounded-full hover:bg-slate-200 transition-all flex items-center justify-center gap-4 uppercase tracking-widest shadow-2xl shadow-white/5"
                   >
                     {slide.cta}
+                    <ArrowUpRight size={22} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                   </Link>
+                  <a 
+                    href={WHATSAPP_URL}
+                    target="_blank"
+                    className="px-12 py-6 border border-[#25D366]/30 text-[#25D366] font-black text-sm rounded-full hover:bg-[#25D366]/5 transition-all flex items-center justify-center gap-4 uppercase tracking-widest backdrop-blur-sm group"
+                  >
+                    <MessageCircle size={22} className="group-hover:scale-110 transition-transform" />
+                    Chat on WhatsApp
+                  </a>
                 </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
 
         {/* Slider Controls */}
-        <div className="absolute bottom-12 left-6 lg:left-12 z-20 flex items-center gap-6">
-          <div className="flex gap-2">
+        <div className="absolute bottom-16 left-1/2 -translate-x-1/2 z-20 flex items-center gap-12">
+          <button 
+            onClick={prevSlide}
+            className="w-14 h-14 rounded-full border border-white/5 bg-white/5 backdrop-blur-xl flex items-center justify-center text-white hover:bg-white hover:text-brand-dark transition-all group"
+          >
+            <ChevronLeft size={24} className="group-hover:-translate-x-0.5 transition-transform" />
+          </button>
+
+          {/* Progress Indicators */}
+          <div className="flex items-center gap-4">
             {slides.map((_, i) => (
               <button
                 key={i}
                 onClick={() => setCurrentSlide(i)}
-                className={`h-1 transition-all duration-500 rounded-full ${
-                  i === currentSlide ? 'w-12 bg-white' : 'w-4 bg-white/20'
-                }`}
-              />
+                className="group relative h-1.5 w-12 bg-white/10 rounded-full overflow-hidden transition-all hover:bg-white/20"
+              >
+                <div 
+                  className={`absolute top-0 left-0 h-full bg-white transition-all duration-[6000ms] ease-linear ${
+                    i === currentSlide ? 'w-full' : 'w-0'
+                  }`}
+                />
+              </button>
             ))}
           </div>
-          <div className="flex gap-4">
-            <button 
-              onClick={() => setCurrentSlide(prev => (prev - 1 + slides.length) % slides.length)}
-              className="p-3 border border-white/10 rounded-full text-white hover:bg-white/5 transition-colors"
-            >
-              <ChevronLeft size={20} />
-            </button>
-            <button 
-              onClick={() => setCurrentSlide(prev => (prev + 1) % slides.length)}
-              className="p-3 border border-white/10 rounded-full text-white hover:bg-white/5 transition-colors"
-            >
-              <ChevronRight size={20} />
-            </button>
-          </div>
+
+          <button 
+            onClick={nextSlide}
+            className="w-14 h-14 rounded-full border border-white/5 bg-white/5 backdrop-blur-xl flex items-center justify-center text-white hover:bg-white hover:text-brand-dark transition-all group"
+          >
+            <ChevronRight size={24} className="group-hover:translate-x-0.5 transition-transform" />
+          </button>
         </div>
       </section>
 
-      {/* Strategic Value Proposition */}
-      <section className="py-32 bg-brand-dark px-6 lg:px-12 border-b border-slate-900">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-24 items-center">
-          <div className="space-y-10">
-            <h2 className="text-xs font-bold uppercase tracking-[0.4em] text-indigo-400">The Philosophy</h2>
-            <h3 className="text-4xl md:text-6xl font-display text-white leading-tight font-light">
-              Most digital efforts fail due to <span className="text-slate-600">poor architecture.</span>
-            </h3>
-            <p className="text-xl text-slate-400 leading-relaxed font-light">
-              We replace "guessing" with "engineering." Webhouse Media exists to bridge the gap between high ambition and predictable business outcomes.
-            </p>
-            <div className="pt-4">
-              <Link to="/about" className="inline-flex items-center gap-2 text-white font-bold uppercase tracking-widest text-xs border-b border-indigo-500 pb-2 hover:gap-4 transition-all">
-                Learn our perspective <ArrowRight size={14} />
-              </Link>
+      {/* --- STATS SECTION --- */}
+      <section className="py-24 border-y border-white/5 bg-brand-surface relative z-10">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-24 text-center md:text-left">
+            <div className="flex flex-col items-center md:items-start space-y-3">
+              <span className="text-6xl lg:text-8xl font-display font-bold text-white tracking-tighter">
+                {counts.projects.toLocaleString()}<span className="text-indigo-500">+</span>
+              </span>
+              <span className="text-[10px] uppercase tracking-[0.5em] font-black text-slate-500">Global Implementations</span>
             </div>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <div className="p-10 border border-slate-800 rounded-[32px] bg-slate-900/20 backdrop-blur-sm group hover:border-indigo-500/50 transition-all duration-500">
-              <Target className="text-indigo-400 mb-8 transition-transform group-hover:scale-110" size={32} />
-              <h4 className="text-xl text-white font-display mb-4">Strategic Clarity</h4>
-              <p className="text-sm text-slate-500 leading-relaxed">Defining the "Who," "Why," and "How" before we write a single line of code or copy.</p>
+            <div className="flex flex-col items-center md:items-start space-y-3">
+              <span className="text-6xl lg:text-8xl font-display font-bold text-white tracking-tighter">
+                {counts.clients}<span className="text-indigo-500">+</span>
+              </span>
+              <span className="text-[10px] uppercase tracking-[0.5em] font-black text-slate-500">Ambitious Partners</span>
             </div>
-            <div className="p-10 border border-slate-800 rounded-[32px] bg-slate-900/20 backdrop-blur-sm group hover:border-slate-500/50 transition-all duration-500">
-              <TrendingUp className="text-slate-400 mb-8 transition-transform group-hover:scale-110" size={32} />
-              <h4 className="text-xl text-white font-display mb-4">Outcome Scaling</h4>
-              <p className="text-sm text-slate-500 leading-relaxed">Systems built not just to look good, but to drive architected, predictable income.</p>
+            <div className="flex flex-col items-center md:items-start space-y-3">
+              <span className="text-6xl lg:text-8xl font-display font-bold text-white tracking-tighter">
+                {counts.countries}<span className="text-indigo-500">+</span>
+              </span>
+              <span className="text-[10px] uppercase tracking-[0.5em] font-black text-slate-500">Active Jurisdictions</span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Solutions Ecosystem */}
-      <section className="py-32 bg-slate-950 px-6">
+      {/* --- SERVICES BENTO GRID --- */}
+      <section className="py-40 bg-brand-dark px-6 lg:px-12 relative overflow-hidden">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-24 text-center space-y-6">
-            <h2 className="text-xs font-bold uppercase tracking-[0.4em] text-slate-500">The Pillars</h2>
-            <h3 className="text-4xl md:text-7xl font-display text-white font-light">Three Pillars of Growth</h3>
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-24 gap-8">
+            <div className="space-y-4 max-w-2xl">
+              <span className="text-[10px] font-black uppercase tracking-[0.5em] text-indigo-500">Service Ecosystems</span>
+              <h2 className="text-5xl md:text-7xl font-display font-bold text-white tracking-tight">Growth Engines Built on Precision.</h2>
+            </div>
+            <Link to="/services" className="flex items-center gap-3 text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-white transition-colors">
+              Explore All Architecture <ChevronRight size={16} />
+            </Link>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-10">
-            <Link to="/solutions/growth" className="group relative p-12 border border-slate-900 hover:border-indigo-500/30 rounded-[40px] transition-all duration-700 bg-brand-dark/50 overflow-hidden">
-              <div className="absolute top-0 right-0 p-8 opacity-5 transition-transform group-hover:scale-150 duration-700">
-                <Target size={120} />
-              </div>
-              <h4 className="text-3xl font-display text-white mb-6">Growth & Strategy</h4>
-              <p className="text-slate-400 leading-relaxed mb-10 text-lg">Aligning business objectives with high-level digital consulting.</p>
-              <div className="flex items-center gap-3 text-xs font-bold uppercase tracking-widest text-indigo-400 opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-500">
-                View Strategy <ArrowRight size={14} />
-              </div>
-            </Link>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {bentoServices.map((svc) => (
+              <Link 
+                key={svc.id} 
+                to={svc.link} 
+                className={`group bento-card rounded-[40px] p-12 flex flex-col justify-between overflow-hidden relative ${svc.span} border-white/5 hover:border-indigo-500/20`}
+              >
+                <div className="relative z-10 space-y-8">
+                  <div className={`w-16 h-16 ${svc.bg} rounded-2xl flex items-center justify-center border border-white/5 transition-all group-hover:scale-110 duration-500 group-hover:bg-indigo-500/20`}>
+                    <svc.icon className={svc.accent} size={32} />
+                  </div>
+                  <div className="space-y-3">
+                    <span className="text-[10px] font-black uppercase tracking-widest text-slate-500 group-hover:text-indigo-400 transition-colors">{svc.subtitle}</span>
+                    <h3 className="text-3xl md:text-4xl font-display font-bold text-white tracking-tight leading-none">{svc.title}</h3>
+                  </div>
+                  <p className="text-slate-500 text-lg leading-relaxed max-w-sm group-hover:text-slate-400 transition-colors font-light">
+                    {svc.description}
+                  </p>
+                </div>
+                
+                <div className="mt-12 relative z-10 flex items-center justify-between gap-3 text-[10px] font-black uppercase tracking-widest text-white/40 group-hover:text-white transition-colors">
+                  <div className="flex items-center gap-3">
+                    System Blueprint <ArrowUpRight size={16} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                  </div>
+                  <a 
+                    href={WHATSAPP_URL} 
+                    target="_blank" 
+                    onClick={(e) => e.stopPropagation()} 
+                    className="p-3 bg-[#25D366]/10 rounded-full text-[#25D366] hover:bg-[#25D366] hover:text-white transition-all"
+                    title="Direct WhatsApp Query"
+                  >
+                    <MessageCircle size={18} />
+                  </a>
+                </div>
 
-            <Link to="/solutions/presence" className="group relative p-12 border border-slate-900 hover:border-indigo-500/30 rounded-[40px] transition-all duration-700 bg-brand-dark/50 overflow-hidden">
-              <div className="absolute top-0 right-0 p-8 opacity-5 transition-transform group-hover:scale-150 duration-700">
-                <Layout size={120} />
-              </div>
-              <h4 className="text-3xl font-display text-white mb-6">Digital Presence</h4>
-              <p className="text-slate-400 leading-relaxed mb-10 text-lg">Building credible, conversion-focused sales assets and ecosystems.</p>
-              <div className="flex items-center gap-3 text-xs font-bold uppercase tracking-widest text-indigo-400 opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-500">
-                View Ecosystems <ArrowRight size={14} />
-              </div>
-            </Link>
-
-            <Link to="/solutions/marketing" className="group relative p-12 border border-slate-900 hover:border-indigo-500/30 rounded-[40px] transition-all duration-700 bg-brand-dark/50 overflow-hidden">
-              <div className="absolute top-0 right-0 p-8 opacity-5 transition-transform group-hover:scale-150 duration-700">
-                <Zap size={120} />
-              </div>
-              <h4 className="text-3xl font-display text-white mb-6">Visibility Systems</h4>
-              <p className="text-slate-400 leading-relaxed mb-10 text-lg">Consistent, authority-led marketing that feeds your sales engine.</p>
-              <div className="flex items-center gap-3 text-xs font-bold uppercase tracking-widest text-indigo-400 opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-500">
-                View Systems <ArrowRight size={14} />
-              </div>
-            </Link>
+                {/* Decorative Elements */}
+                <div className={`absolute -top-12 -right-12 p-12 opacity-0 group-hover:opacity-5 transition-all duration-1000 rotate-12 scale-150`}>
+                   <svc.icon size={250} />
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Trust & Partnership */}
-      <section className="py-40 px-6 text-center bg-brand-dark">
-        <div className="max-w-4xl mx-auto space-y-16">
-          <div className="flex justify-center gap-3">
-            {[1,2,3,4,5].map(i => <div key={i} className="w-1.5 h-1.5 rounded-full bg-indigo-500 shadow-[0_0_10px_rgba(99,102,241,0.5)]"></div>)}
+      {/* --- TESTIMONIALS MARQUEE --- */}
+      <section className="py-40 bg-brand-surface border-y border-white/5 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 mb-24 flex flex-col items-center text-center">
+          <span className="text-[10px] font-black uppercase tracking-[0.5em] text-slate-500 mb-6">Global Validation</span>
+          <h2 className="text-5xl md:text-7xl font-display font-bold text-white tracking-tighter">Architected for Real Impact.</h2>
+        </div>
+        
+        <div className="flex gap-8 animate-marquee whitespace-nowrap px-6">
+          {[...testimonials, ...testimonials].map((t, i) => (
+            <div key={i} className="inline-block min-w-[400px] md:min-w-[550px] p-12 bento-card rounded-[48px] whitespace-normal space-y-10 border-white/5">
+              <Quote className="text-indigo-500 opacity-20" size={56} />
+              <p className="text-slate-300 text-xl md:text-2xl leading-relaxed font-light italic">"{t.feedback}"</p>
+              <div className="flex items-center justify-between pt-8 border-t border-white/5">
+                <div className="flex flex-col gap-1">
+                  <span className="text-white font-bold tracking-tight text-xl">{t.name}</span>
+                  <span className="text-[10px] font-black uppercase tracking-widest text-indigo-400">Verified Client</span>
+                </div>
+                <span className="text-[10px] font-black uppercase tracking-widest text-slate-500 px-5 py-2 bg-white/5 rounded-full border border-white/5">
+                  {t.country}
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* --- FINAL CTA --- */}
+      <section className="py-48 relative px-6 lg:px-12 text-center bg-brand-dark">
+        <div className="absolute inset-0 grid-pattern opacity-20 pointer-events-none"></div>
+        <div className="relative z-10 max-w-4xl mx-auto space-y-20">
+          <div className="flex justify-center gap-10">
+            <div className="p-6 rounded-3xl bg-white/5 border border-white/10 animate-float shadow-2xl"><Monitor size={32} className="text-indigo-400" /></div>
+            <div className="p-6 rounded-3xl bg-white/5 border border-white/10 animate-float [animation-delay:1s] shadow-2xl"><Bot size={32} className="text-cyan-400" /></div>
+            <div className="p-6 rounded-3xl bg-white/5 border border-white/10 animate-float [animation-delay:2s] shadow-2xl"><Layers size={32} className="text-amber-400" /></div>
           </div>
-          <h2 className="text-4xl md:text-7xl font-display text-white leading-[1.1] font-light">
-            We are a strategic partner, <br />
-            <span className="italic text-slate-600">not a service vendor.</span>
-          </h2>
-          <p className="text-xl md:text-2xl text-slate-500 font-light max-w-2xl mx-auto leading-relaxed">
-            We work exclusively with business owners who value clarity, precision, and architectural integrity.
-          </p>
-          <div className="pt-10">
+          
+          <div className="space-y-8">
+            <h2 className="text-6xl md:text-9xl font-display font-bold text-white tracking-tighter leading-[0.85]">
+              Engineer Your <br />
+              <span className="text-gradient italic">Growth.</span>
+            </h2>
+            <p className="text-xl md:text-3xl text-slate-500 font-light leading-relaxed max-w-3xl mx-auto">
+              We partner with global founders who value technical precision, narrative soul, and predictable scaling systems.
+            </p>
+          </div>
+          
+          <div className="pt-10 flex flex-col sm:flex-row items-center justify-center gap-6">
             <Link 
               to="/contact" 
-              className="group px-14 py-7 bg-white text-brand-dark font-bold rounded-2xl hover:scale-[1.02] transition-all uppercase tracking-[0.2em] text-sm flex items-center justify-center gap-4 mx-auto w-fit shadow-2xl shadow-white/10"
+              className="group inline-flex items-center gap-6 px-16 py-8 bg-white text-brand-dark font-black rounded-full hover:scale-105 transition-all uppercase tracking-widest text-sm shadow-2xl shadow-indigo-500/10"
             >
-              Request a Consultation
-              <ArrowRight className="group-hover:translate-x-2 transition-transform" size={20} />
+              Consult with Architects
+              <ArrowUpRight size={24} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
             </Link>
+            <a 
+              href={WHATSAPP_URL} 
+              target="_blank"
+              className="group inline-flex items-center gap-6 px-16 py-8 border border-[#25D366] text-[#25D366] font-black rounded-full hover:bg-[#25D366]/5 transition-all uppercase tracking-widest text-sm"
+            >
+              Direct WhatsApp
+              <MessageCircle size={24} className="group-hover:scale-110 transition-transform" />
+            </a>
           </div>
         </div>
       </section>

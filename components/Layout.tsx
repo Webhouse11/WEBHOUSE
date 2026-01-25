@@ -1,7 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useWebsite } from '../context/WebsiteContext';
-import { Menu, X, Facebook, Instagram, Linkedin, Youtube, Phone, Mail, MapPin, ChevronDown } from 'lucide-react';
+import { Menu, X, Facebook, Instagram, Linkedin, Youtube, Phone, ChevronDown, Zap, Globe, ArrowUpRight } from 'lucide-react';
+
+const WHATSAPP_MESSAGE = `👋 Hello! Welcome to Webhouse Media & Marketing Studio.
+Thank you for reaching out. We’re excited to help you build, automate, and grow your business digitally.
+To help us serve you faster, please tell us:
+1️⃣ Are you interested in Website & App Development?
+2️⃣ Digital Sales & Marketing Systems?
+3️⃣ Graphic & Business Branding?
+4️⃣ Social Media Management?
+5️⃣ Or Other Inquiries?
+📌 One of our team members will get back to you within a few minutes.
+While you wait, you can also check our services here: 🚀 https://webhousemedia.vercel.app/
+Thank you for choosing Webhouse Media & Marketing Studio – where ideas become systems, and systems become results!`;
+
+const WHATSAPP_URL = `https://wa.me/2348152469749?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { settings } = useWebsite();
@@ -10,161 +24,157 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const location = useLocation();
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 20);
+    const handleScroll = () => setIsScrolled(window.scrollY > 40);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const navLinks = [
     { label: 'Home', path: '/' },
-    { label: 'About', path: '/about' },
-    { 
-      label: 'Solutions', 
-      isDropdown: true,
-      subLinks: [
-        { label: 'Growth & Strategy', path: '/solutions/growth' },
-        { label: 'Digital Presence', path: '/solutions/presence' },
-        { label: 'Marketing Systems', path: '/solutions/marketing' }
-      ]
-    },
-    { label: 'Portfolio', path: '/portfolio' },
+    { label: 'Systems', path: '/services' },
+    { label: 'Philosophy', path: '/about' },
+    { label: 'Cases', path: '/portfolio' },
     { label: 'Contact', path: '/contact' },
   ];
 
   return (
-    <div className="min-h-screen flex flex-col font-sans bg-brand-dark text-slate-400">
+    <div className="min-h-screen flex flex-col font-sans bg-brand-dark">
       {/* Navigation */}
-      <nav className={`fixed top-0 z-50 w-full transition-all duration-500 border-b ${
-        isScrolled ? 'glass border-slate-800/50 py-4' : 'bg-transparent border-transparent py-6'
+      <nav className={`fixed top-0 z-[60] w-full transition-all duration-500 ${
+        isScrolled ? 'py-4' : 'py-8'
       }`}>
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="flex items-center justify-between"> 
-            <Link to="/" className="flex items-center group">
-               <span className="font-display font-medium text-xl tracking-tight text-white transition-opacity group-hover:opacity-80">
-                 WEBHOUSE <span className="font-light text-slate-500">MEDIA</span>
+          <div className={`flex items-center justify-between p-4 rounded-full transition-all duration-500 border border-white/5 ${
+            isScrolled ? 'glass shadow-2xl shadow-black/40' : 'bg-transparent border-transparent'
+          }`}>
+            <Link to="/" className="flex items-center group ml-2">
+               <span className="font-display font-bold text-xl tracking-tighter text-white">
+                 WEBHOUSE <span className="font-light text-slate-500 uppercase text-[8px] tracking-[0.4em] ml-2">Studio</span>
                </span>
             </Link>
             
             <div className="hidden lg:flex items-center space-x-10">
               {navLinks.map((link) => (
-                <div key={link.label} className="relative group/nav">
-                  {link.isDropdown ? (
-                    <>
-                      <button className="flex items-center gap-1.5 text-sm font-medium hover:text-white transition-colors">
-                        {link.label} <ChevronDown size={14} className="opacity-50" />
-                      </button>
-                      <div className="absolute top-full left-0 mt-4 w-56 opacity-0 translate-y-2 pointer-events-none group-hover/nav:opacity-100 group-hover/nav:translate-y-0 group-hover/nav:pointer-events-auto transition-all duration-300">
-                        <div className="glass border border-slate-800 rounded-xl p-2 shadow-2xl">
-                          {link.subLinks?.map(sub => (
-                            <Link 
-                              key={sub.path} 
-                              to={sub.path}
-                              className="block px-4 py-2.5 rounded-lg text-sm hover:bg-slate-800 hover:text-white transition-colors"
-                            >
-                              {sub.label}
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-                    </>
-                  ) : (
-                    <Link
-                      to={link.path || '/'}
-                      className={`text-sm font-medium transition-colors ${
-                        location.pathname === link.path ? 'text-white' : 'hover:text-white'
-                      }`}
-                    >
-                      {link.label}
-                    </Link>
-                  )}
-                </div>
+                <Link
+                  key={link.label}
+                  to={link.path}
+                  className={`text-[10px] uppercase font-black tracking-[0.2em] transition-colors ${
+                    location.pathname === link.path ? 'text-indigo-400' : 'text-slate-400 hover:text-white'
+                  }`}
+                >
+                  {link.label}
+                </Link>
               ))}
               <Link 
                 to="/contact" 
-                className="px-6 py-2.5 bg-white text-brand-dark text-xs font-bold rounded-full hover:bg-slate-200 transition-all uppercase tracking-widest"
+                className="px-6 py-2.5 bg-white text-brand-dark text-[10px] font-bold rounded-full hover:bg-slate-200 transition-all uppercase tracking-widest flex items-center gap-2"
               >
-                Start With Clarity
+                Project Inquiry <ArrowUpRight size={14} />
               </Link>
             </div>
 
-            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="lg:hidden text-white">
+            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="lg:hidden text-white mr-2">
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
         </div>
 
-        {/* Mobile Nav */}
+        {/* Mobile Nav Overlay */}
         {isMenuOpen && (
-          <div className="lg:hidden absolute top-full left-0 w-full glass border-b border-slate-800 p-6 space-y-4 animate-in fade-in slide-in-from-top-4 duration-300">
-            {navLinks.map(link => (
-              <div key={link.label}>
-                {link.isDropdown ? (
-                  <div className="space-y-2">
-                    <p className="text-xs uppercase tracking-widest font-bold text-slate-500 mb-2">{link.label}</p>
-                    {link.subLinks?.map(sub => (
-                      <Link key={sub.path} to={sub.path} onClick={() => setIsMenuOpen(false)} className="block py-2 text-lg text-white">{sub.label}</Link>
-                    ))}
-                  </div>
-                ) : (
-                  <Link to={link.path || '/'} onClick={() => setIsMenuOpen(false)} className="block py-2 text-lg text-white">{link.label}</Link>
-                )}
+          <div className="lg:hidden fixed inset-0 z-[70] bg-brand-dark/95 backdrop-blur-xl animate-in fade-in duration-300">
+            <div className="flex flex-col h-full p-8">
+              <div className="flex justify-between items-center mb-16">
+                 <span className="font-display font-bold text-xl text-white">WEBHOUSE</span>
+                 <button onClick={() => setIsMenuOpen(false)} className="text-white"><X size={32} /></button>
               </div>
-            ))}
+              <div className="flex flex-col space-y-8">
+                {navLinks.map(link => (
+                  <Link 
+                    key={link.label} 
+                    to={link.path} 
+                    onClick={() => setIsMenuOpen(false)} 
+                    className="text-4xl font-display font-bold text-white hover:text-indigo-400 transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+              <div className="mt-auto py-12 border-t border-white/5 space-y-6">
+                 <p className="text-sm text-slate-500 uppercase tracking-widest font-bold">New Business</p>
+                 <a href={`mailto:${settings.contactEmail}`} className="text-xl text-white font-medium">{settings.contactEmail}</a>
+                 <div className="flex gap-6 pt-4">
+                    <a href={settings.instagramUrl} className="text-slate-500 hover:text-white"><Instagram size={20} /></a>
+                    <a href={settings.linkedinUrl} className="text-slate-500 hover:text-white"><Linkedin size={20} /></a>
+                    <a href={WHATSAPP_URL} className="text-slate-500 hover:text-white"><Zap size={20} /></a>
+                 </div>
+              </div>
+            </div>
           </div>
         )}
       </nav>
 
-      <main className="flex-grow pt-24">
+      <main className="flex-grow">
         {children}
       </main>
 
-      {/* WhatsApp Floating Button - PRESERVED */}
-      <a
-        href="https://wa.link/ci28mh"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed bottom-8 right-8 z-50 bg-[#25D366] hover:scale-110 transition-transform p-4 rounded-full shadow-2xl"
-        aria-label="Chat on WhatsApp"
-      >
-        <Phone className="w-6 h-6 text-white" />
-      </a>
-
-      <footer className="bg-brand-dark border-t border-slate-900 pt-24 pb-12">
+      {/* Footer */}
+      <footer className="bg-brand-dark border-t border-white/5 pt-32 pb-16">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-16">
-                <div className="col-span-1 md:col-span-2 space-y-8">
-                    <h3 className="font-display font-medium text-2xl text-white uppercase tracking-tight">
-                      WEBHOUSE <span className="text-slate-500">MEDIA</span>
-                    </h3>
-                    <p className="text-slate-500 text-lg leading-relaxed max-w-md">
-                        Turning ambitious ideas into architected digital income. Strategic, thoughtful, and conversion-focused.
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-16 lg:gap-24">
+                <div className="md:col-span-5 space-y-10">
+                    <Link to="/" className="inline-block">
+                        <h3 className="font-display font-bold text-3xl text-white tracking-tighter">
+                          WEBHOUSE <span className="text-slate-600 uppercase text-[12px] tracking-[0.5em] ml-3">Studio</span>
+                        </h3>
+                    </Link>
+                    <p className="text-slate-500 text-xl leading-relaxed font-light">
+                        Engineering ambitious digital systems and global growth architectures for high-performance brands.
                     </p>
-                    <div className="flex space-x-6">
-                        {settings.facebookUrl && <a href={settings.facebookUrl} className="hover:text-white transition-colors"><Facebook size={20} /></a>}
-                        {settings.instagramUrl && <a href={settings.instagramUrl} className="hover:text-white transition-colors"><Instagram size={20} /></a>}
-                        {settings.linkedinUrl && <a href={settings.linkedinUrl} className="hover:text-white transition-colors"><Linkedin size={20} /></a>}
+                    <div className="flex space-x-8">
+                        {settings.facebookUrl && <a href={settings.facebookUrl} target="_blank" className="text-slate-700 hover:text-white transition-colors"><Facebook size={20} /></a>}
+                        {settings.instagramUrl && <a href={settings.instagramUrl} target="_blank" className="text-slate-700 hover:text-white transition-colors"><Instagram size={20} /></a>}
+                        {settings.linkedinUrl && <a href={settings.linkedinUrl} target="_blank" className="text-slate-700 hover:text-white transition-colors"><Linkedin size={20} /></a>}
+                        {settings.youtubeUrl && <a href={settings.youtubeUrl} target="_blank" className="text-slate-700 hover:text-white transition-colors"><Youtube size={20} /></a>}
                     </div>
                 </div>
 
-                <div className="space-y-6">
-                    <h4 className="text-white text-xs font-bold uppercase tracking-widest">Navigation</h4>
-                    <ul className="space-y-4 text-sm">
-                        <li><Link to="/about" className="hover:text-white transition-colors">Philosophy</Link></li>
-                        <li><Link to="/solutions/growth" className="hover:text-white transition-colors">Growth & Strategy</Link></li>
-                        <li><Link to="/portfolio" className="hover:text-white transition-colors">Selected Projects</Link></li>
-                        <li><Link to="/contact" className="hover:text-white transition-colors">Contact</Link></li>
+                <div className="md:col-span-3 space-y-10">
+                    <h4 className="text-white text-[10px] font-black uppercase tracking-[0.4em]">Growth Pillars</h4>
+                    <ul className="space-y-4 text-xs font-bold uppercase tracking-widest text-slate-500">
+                        <li><Link to="/services/programming-ai" className="hover:text-indigo-400 transition-colors">Programming & AI</Link></li>
+                        <li><Link to="/services/digital-sales" className="hover:text-indigo-400 transition-colors">Sales Funnels</Link></li>
+                        <li><Link to="/services/storytelling" className="hover:text-rose-400 transition-colors">Storytelling</Link></li>
+                        <li><Link to="/services/branding" className="hover:text-indigo-400 transition-colors">Branding Design</Link></li>
+                        <li><Link to="/services/social-media" className="hover:text-indigo-400 transition-colors">Social Influence</Link></li>
                     </ul>
                 </div>
 
-                <div className="space-y-6">
-                    <h4 className="text-white text-xs font-bold uppercase tracking-widest">Office</h4>
-                    <p className="text-sm leading-relaxed">{settings.address}</p>
-                    <a href={`mailto:${settings.contactEmail}`} className="block text-sm hover:text-white transition-colors">{settings.contactEmail}</a>
+                <div className="md:col-span-4 space-y-10">
+                    <h4 className="text-white text-[10px] font-black uppercase tracking-[0.4em]">Inquiries</h4>
+                    <div className="space-y-6">
+                      <div className="space-y-1">
+                        <p className="text-[9px] uppercase tracking-widest text-slate-600 font-black">Global HQ</p>
+                        <p className="text-sm text-slate-500 leading-relaxed uppercase">{settings.address}</p>
+                      </div>
+                      <div className="space-y-1">
+                        <p className="text-[9px] uppercase tracking-widest text-slate-600 font-black">Direct Access</p>
+                        <a href={`mailto:${settings.contactEmail}`} className="text-sm text-white hover:text-indigo-400 transition-colors">{settings.contactEmail}</a>
+                      </div>
+                      <div className="pt-4">
+                        <a href={WHATSAPP_URL} target="_blank" className="group inline-flex items-center gap-3 px-6 py-3 border border-white/5 rounded-full hover:bg-white/5 transition-all text-[10px] font-black uppercase tracking-widest text-white">
+                           WhatsApp Strategy <ArrowUpRight size={14} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                        </a>
+                      </div>
+                    </div>
                 </div>
             </div>
             
-            <div className="border-t border-slate-900 mt-24 pt-8 text-center text-xs text-slate-700 tracking-widest uppercase font-medium">
-                &copy; {new Date().getFullYear()} {settings.brandName}. Professional integrity by design.
+            <div className="border-t border-white/5 mt-32 pt-16 flex flex-col md:flex-row justify-between items-center gap-8 text-[9px] text-slate-700 tracking-[0.4em] uppercase font-black">
+                <div>&copy; {new Date().getFullYear()} {settings.brandName} STUDIO — ENGINEERED FOR GROWTH</div>
+                <div className="flex gap-10">
+                  <span className="hover:text-slate-400 cursor-pointer transition-colors">Privacy Architecture</span>
+                  <span className="hover:text-slate-400 cursor-pointer transition-colors">Legal Terms</span>
+                </div>
             </div>
         </div>
       </footer>
