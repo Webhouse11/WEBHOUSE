@@ -12,9 +12,9 @@ const slides = [
     id: 1,
     accent: "text-indigo-400",
     bg: "bg-indigo-600/10",
-    pill: "Intelligent Digital Architecture",
-    title: "Systems for <span class='text-gradient'>Unlimited</span> Digital Growth.",
-    desc: "We architect high-performance digital systems and AI-powered automation for global brands seeking structural excellence.",
+    pill: "Global Digital Systems",
+    title: "<h1 class='text-5xl md:text-8xl lg:text-[110px] font-display font-bold text-white leading-[0.9] tracking-tighter max-w-6xl animate-in slide-in-from-bottom duration-1000 delay-100'>Global Digital Systems & <span class='text-gradient'>Growth Studio</span> for Modern Businesses</h1>",
+    desc: "Webhouse Media & Marketing Studio is a global digital solutions company specializing in website and app development, AI business automation, digital sales and marketing systems, branding, and social media management.",
     cta: "Start Project",
     link: "/contact",
     icon: Globe
@@ -24,7 +24,7 @@ const slides = [
     accent: "text-cyan-400",
     bg: "bg-cyan-600/10",
     pill: "Programming & AI Automation",
-    title: "Code that <span class='text-gradient-accent'>Scales</span>. AI that Thinks.",
+    title: "<h2 class='text-5xl md:text-8xl lg:text-[110px] font-display font-bold text-white leading-[0.9] tracking-tighter max-w-6xl animate-in slide-in-from-bottom duration-1000 delay-100'>Website, <span class='text-gradient-accent'>App Development</span> & AI Business Automation</h2>",
     desc: "Deploying enterprise-grade SaaS, custom portals, and predictive AI models that replace manual stress with automated precision.",
     cta: "Explore Tech",
     link: "/services/programming-ai",
@@ -35,7 +35,7 @@ const slides = [
     accent: "text-emerald-400",
     bg: "bg-emerald-600/10",
     pill: "Digital Sales Systems",
-    title: "Predicted <span class='text-emerald-400'>Growth</span>. Architected Funnels.",
+    title: "<h2 class='text-5xl md:text-8xl lg:text-[110px] font-display font-bold text-white leading-[0.9] tracking-tighter max-w-6xl animate-in slide-in-from-bottom duration-1000 delay-100'>Digital Sales & <span class='text-emerald-400'>Marketing Systems</span> That Convert</h2>",
     desc: "Stop guessing. We build conversion-optimized sales engines that turn traffic into predictable, high-ticket revenue pipelines.",
     cta: "Build Funnel",
     link: "/services/digital-sales",
@@ -43,25 +43,25 @@ const slides = [
   },
   {
     id: 4,
-    accent: "text-rose-400",
-    bg: "bg-rose-600/10",
-    pill: "Author & Storytelling",
-    title: "Words that <span class='text-rose-400 italic'>Command</span> Attention.",
-    desc: "Logic makes people think, but stories make people act. We architect emotional brand legends that drive deep audience loyalty.",
-    cta: "Our Method",
-    link: "/services/storytelling",
-    icon: Feather
-  },
-  {
-    id: 5,
     accent: "text-amber-400",
     bg: "bg-amber-600/10",
     pill: "Global Branding Systems",
-    title: "Identity <span class='text-amber-400'>Engineered</span>. Trust Built.",
+    title: "<h2 class='text-5xl md:text-8xl lg:text-[110px] font-display font-bold text-white leading-[0.9] tracking-tighter max-w-6xl animate-in slide-in-from-bottom duration-1000 delay-100'>Professional <span class='text-amber-400'>Branding</span> & Graphic Design Solutions</h2>",
     desc: "Premium visual storytelling and 24/7 visibility systems designed to position your brand as a global market authority.",
     cta: "View Cases",
     link: "/portfolio",
     icon: Palette
+  },
+  {
+    id: 5,
+    accent: "text-rose-400",
+    bg: "bg-rose-600/10",
+    pill: "Social Media Management",
+    title: "<h2 class='text-5xl md:text-8xl lg:text-[110px] font-display font-bold text-white leading-[0.9] tracking-tighter max-w-6xl animate-in slide-in-from-bottom duration-1000 delay-100'>Social Media <span class='text-rose-400'>Management</span> for Business Growth</h2>",
+    desc: "Strategic narrative systems and full account management to maintain 24/7 brand relevance and global audience growth.",
+    cta: "Grow Visibility",
+    link: "/services/social-media",
+    icon: Zap
   }
 ];
 
@@ -98,8 +98,8 @@ const Home: React.FC = () => {
   const bentoServices = [
     {
       id: 1,
-      title: "Programming & AI Automation",
-      subtitle: "Custom SaaS, Enterprise Portals & AI Ops",
+      title: "Website, App Development & AI Business Automation",
+      subtitle: "Programming & Intelligence",
       description: "High-end websites, apps, and predictive AI systems designed to automate your business operations and reduce manual overhead.",
       icon: Code,
       link: "/services/programming-ai",
@@ -109,9 +109,9 @@ const Home: React.FC = () => {
     },
     {
       id: 2,
-      title: "Digital Sales Architect",
+      title: "Digital Sales & Marketing Systems That Convert",
       subtitle: "High-Intent Lead Engines",
-      description: "Predictable digital growth via conversion-optimized funnel systems.",
+      description: "Predictable digital growth via conversion-optimized funnel systems that turn clicks into clients.",
       icon: TrendingUp,
       link: "/services/digital-sales",
       span: "md:col-span-1",
@@ -120,9 +120,9 @@ const Home: React.FC = () => {
     },
     {
       id: 3,
-      title: "Author & Storytelling",
-      subtitle: "Narrative Sales Engines",
-      description: "Architecting emotional legends and high-authority brand stories that convert.",
+      title: "Author & Storytelling Narrative Systems",
+      subtitle: "Emotional Influence",
+      description: "Architecting emotional legends and high-authority brand stories that command audience loyalty.",
       icon: Feather,
       link: "/services/storytelling",
       span: "md:col-span-1",
@@ -131,9 +131,9 @@ const Home: React.FC = () => {
     },
     {
       id: 4,
-      title: "Graphic & Branding",
+      title: "Professional Branding & Graphic Design Solutions",
       subtitle: "Visual Identity Systems",
-      description: "Premium visual storytelling for global credibility and market authority.",
+      description: "Premium visual storytelling for global credibility and instant market authority across all platforms.",
       icon: Palette,
       link: "/services/branding",
       span: "md:col-span-1",
@@ -142,9 +142,9 @@ const Home: React.FC = () => {
     },
     {
       id: 5,
-      title: "Social Visibility Systems",
-      subtitle: "24/7 Authority Management",
-      description: "Content planning and visibility systems to maintain your global brand relevance.",
+      title: "Social Media Management for Business Growth",
+      subtitle: "24/7 Authority Systems",
+      description: "Content planning and visibility systems to maintain your global brand relevance and authority.",
       icon: Zap,
       link: "/services/social-media",
       span: "md:col-span-1",
@@ -171,7 +171,6 @@ const Home: React.FC = () => {
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
-        {/* Animated Background Blobs that shift per slide */}
         <div className={`absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full blur-[150px] transition-all duration-[2000ms] pointer-events-none opacity-40 ${slides[currentSlide].bg}`}></div>
         <div className={`absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full blur-[130px] transition-all duration-[2000ms] pointer-events-none opacity-30 ${slides[currentSlide].bg}`}></div>
         
@@ -189,12 +188,9 @@ const Home: React.FC = () => {
                   <span className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-300">{slide.pill}</span>
                 </div>
                 
-                <h1 
-                  className="text-5xl md:text-8xl lg:text-[120px] font-display font-bold text-white leading-[0.9] tracking-tighter max-w-6xl animate-in slide-in-from-bottom duration-1000 delay-100"
-                  dangerouslySetInnerHTML={{ __html: slide.title }}
-                />
+                <div dangerouslySetInnerHTML={{ __html: slide.title }} />
                 
-                <p className="text-lg md:text-2xl text-slate-400 max-w-3xl leading-relaxed font-light animate-in slide-in-from-bottom duration-1000 delay-200">
+                <p className="text-lg md:text-2xl text-slate-400 max-w-4xl leading-relaxed font-light animate-in slide-in-from-bottom duration-1000 delay-200">
                   {slide.desc}
                 </p>
 
@@ -220,7 +216,6 @@ const Home: React.FC = () => {
           ))}
         </div>
 
-        {/* Slider Controls */}
         <div className="absolute bottom-16 left-1/2 -translate-x-1/2 z-20 flex items-center gap-12">
           <button 
             onClick={prevSlide}
@@ -229,7 +224,6 @@ const Home: React.FC = () => {
             <ChevronLeft size={24} className="group-hover:-translate-x-0.5 transition-transform" />
           </button>
 
-          {/* Progress Indicators */}
           <div className="flex items-center gap-4">
             {slides.map((_, i) => (
               <button
@@ -255,8 +249,18 @@ const Home: React.FC = () => {
         </div>
       </section>
 
+      {/* --- SEO INTRO SECTION --- */}
+      <section className="py-32 bg-brand-surface border-y border-white/5 px-6 lg:px-12 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto flex flex-col items-center text-center space-y-8">
+           <h2 className="text-3xl md:text-5xl font-display font-bold text-white tracking-tight">Digital Systems Built for Global Scale</h2>
+           <p className="text-xl md:text-2xl text-slate-400 max-w-5xl leading-relaxed font-light italic">
+              Webhouse Media & Marketing Studio is a global digital solutions company specializing in website and app development, AI business automation, digital sales and marketing systems, branding, and social media management. We help startups, SMEs, and established businesses build scalable digital systems that attract customers, automate operations, and drive consistent growth worldwide.
+           </p>
+        </div>
+      </section>
+
       {/* --- STATS SECTION --- */}
-      <section className="py-24 border-y border-white/5 bg-brand-surface relative z-10">
+      <section className="py-24 bg-brand-dark relative z-10">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-24 text-center md:text-left">
             <div className="flex flex-col items-center md:items-start space-y-3">
@@ -329,7 +333,6 @@ const Home: React.FC = () => {
                   </a>
                 </div>
 
-                {/* Decorative Elements */}
                 <div className={`absolute -top-12 -right-12 p-12 opacity-0 group-hover:opacity-5 transition-all duration-1000 rotate-12 scale-150`}>
                    <svc.icon size={250} />
                 </div>

@@ -8,11 +8,11 @@ const DigitalSales: React.FC = () => {
       <section className="relative py-40 overflow-hidden border-b border-slate-900">
         <div className="max-w-7xl mx-auto px-6 lg:px-12 text-center space-y-8 relative z-10">
             <div className="inline-block px-5 py-2 rounded-full border border-indigo-500/20 bg-indigo-500/5 text-[10px] font-black uppercase tracking-[0.4em] text-indigo-400">Pillar 02</div>
-            <h1 className="text-5xl md:text-9xl font-display font-light text-white tracking-tighter">
-               Sales <span className="italic font-normal text-gradient">Systems.</span>
+            <h1 className="text-5xl md:text-9xl font-display font-bold text-white tracking-tighter">
+               Digital Sales & <span className="text-gradient">Marketing Systems</span>
             </h1>
-            <p className="text-xl md:text-3xl text-slate-500 max-w-3xl mx-auto leading-relaxed font-light">
-               We replace guessing with architected lead generation and conversion funnels.
+            <p className="text-xl md:text-3xl text-slate-500 max-w-4xl mx-auto leading-relaxed font-light">
+               Our digital sales and marketing systems help businesses generate leads, build trust, and convert prospects through funnels, email automation, CRM integration, landing pages, and data-driven growth strategies.
             </p>
         </div>
       </section>

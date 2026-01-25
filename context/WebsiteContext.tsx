@@ -23,8 +23,8 @@ const defaultSettings: SiteSettings = {
   linkedinUrl: "https://www.linkedin.com/in/oluranti-clement-7116b078/",
   youtubeUrl: "https://www.youtube.com/@webhousemedia1",
   whatsappNumber: "2348152469749",
-  seoTitle: "WEBHOUSE STUDIO | Global Digital Systems & Growth Studio",
-  seoDescription: "High-end digital strategy, programming, and sales systems for global brands and ambitious SMEs."
+  seoTitle: "Webhouse Media & Marketing Studio | Website, App Development & Digital Growth Agency",
+  seoDescription: "Webhouse Media & Marketing Studio is a global digital agency offering website & app development, AI business automation, digital sales systems, branding, and social media management to help businesses grow and scale."
 };
 
 const defaultServices: ServiceItem[] = [

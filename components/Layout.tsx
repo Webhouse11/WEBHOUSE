@@ -130,6 +130,12 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                     <p className="text-slate-500 text-xl leading-relaxed font-light">
                         Engineering ambitious digital systems and global growth architectures for high-performance brands.
                     </p>
+                    <div className="p-4 bg-white/5 border border-white/5 rounded-2xl">
+                        <p className="text-[10px] text-slate-500 uppercase tracking-widest font-black mb-2">Global Presence</p>
+                        <p className="text-xs text-slate-400 leading-relaxed">
+                          Webhouse Media & Marketing Studio serves clients globally, including Nigeria, United States, United Kingdom, Canada, Germany, United Arab Emirates, South Africa, and Australia.
+                        </p>
+                    </div>
                     <div className="flex space-x-8">
                         {settings.facebookUrl && <a href={settings.facebookUrl} target="_blank" className="text-slate-700 hover:text-white transition-colors"><Facebook size={20} /></a>}
                         {settings.instagramUrl && <a href={settings.instagramUrl} target="_blank" className="text-slate-700 hover:text-white transition-colors"><Instagram size={20} /></a>}

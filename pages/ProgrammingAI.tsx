@@ -34,11 +34,11 @@ const ProgrammingAI: React.FC = () => {
         </div>
         <div className="max-w-7xl mx-auto px-6 lg:px-12 text-center space-y-8 relative z-10">
             <div className="inline-block px-5 py-2 rounded-full border border-indigo-500/20 bg-indigo-500/5 text-[10px] font-black uppercase tracking-[0.4em] text-indigo-400">Pillar 01</div>
-            <h1 className="text-5xl md:text-9xl font-display font-light text-white tracking-tighter">
-               Programming <span className="italic font-normal text-gradient">& AI.</span>
+            <h1 className="text-5xl md:text-9xl font-display font-bold text-white tracking-tighter">
+               Website & <span className="text-gradient">App Development</span> Company
             </h1>
-            <p className="text-xl md:text-3xl text-slate-500 max-w-3xl mx-auto leading-relaxed font-light">
-               We build the secure, scalable, and intelligent architectures that power global business operations.
+            <p className="text-xl md:text-3xl text-slate-500 max-w-4xl mx-auto leading-relaxed font-light">
+               We design and develop high-performance websites, web applications, mobile apps, dashboards, bots, and AI-powered business automation systems. Our solutions are secure, scalable, and built to support long-term business growth.
             </p>
         </div>
       </section>
