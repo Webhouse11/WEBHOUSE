@@ -1,5 +1,5 @@
 import React from 'react';
-import { Target, Eye, Lightbulb, ShieldCheck, Zap } from 'lucide-react';
+import { Target, Eye, Lightbulb, ShieldCheck, Zap, Globe } from 'lucide-react';
 
 const About: React.FC = () => {
   return (
@@ -29,6 +29,15 @@ const About: React.FC = () => {
                   </p>
                   <p>
                     Our team consists of sales strategists, brand architects, and digital experts who prioritize business clarity before clicking a single button. We use AI, data, and structured psychology to build systems that work while you sleep.
+                  </p>
+               </div>
+               <div className="p-6 bg-slate-900/40 border border-slate-800 rounded-3xl space-y-4">
+                  <div className="flex items-center gap-3 text-indigo-400">
+                    <Globe size={20} />
+                    <span className="text-xs font-black uppercase tracking-widest">Global Reach</span>
+                  </div>
+                  <p className="text-slate-400 text-sm leading-relaxed">
+                    Webhouse Media & Marketing Studio serves clients globally, including Nigeria, United States, United Kingdom, Canada, Germany, United Arab Emirates, South Africa, and Australia.
                   </p>
                </div>
             </div>

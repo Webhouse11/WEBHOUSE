@@ -11,7 +11,8 @@ const cases = [
     image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1600",
     outcome: "40% Operational Efficiency Gain",
     description: "Architected a custom enterprise dashboard with predictive AI to automate route optimization and fleet tracking.",
-    tags: ["Custom SaaS", "AI Automation", "React Native"]
+    tags: ["Custom SaaS", "AI Automation", "React Native"],
+    alt: "Webhouse Media & Marketing Studio digital marketing and web development services - AI Logistics Project"
   },
   {
     id: 2,
@@ -21,7 +22,8 @@ const cases = [
     image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=1600",
     outcome: "+350k Revenue in Quarter 1",
     description: "Replaced a static brochure site with a high-intent narrative funnel and automated lead nurturing system.",
-    tags: ["Sales Funnel", "CRM Integration", "Lead Gen"]
+    tags: ["Sales Funnel", "CRM Integration", "Lead Gen"],
+    alt: "Webhouse Media & Marketing Studio sales funnel experts - Real Estate Sales Architecture"
   },
   {
     id: 3,
@@ -31,7 +33,8 @@ const cases = [
     image: "https://images.unsplash.com/photo-1559136555-930d72f1d302?auto=format&fit=crop&q=80&w=1600",
     outcome: "Global Authority Status",
     description: "Complete visual identity and brand legend architecture to position a startup as a global industry leader.",
-    tags: ["Executive Branding", "Narrative Strategy", "Identity"]
+    tags: ["Executive Branding", "Narrative Strategy", "Identity"],
+    alt: "Webhouse Media branding agency - FinTech Rebrand"
   },
   {
     id: 4,
@@ -41,7 +44,8 @@ const cases = [
     image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=1600",
     outcome: "98% Patient Query Resolution",
     description: "Deployed an intelligent LLM-powered assistant to handle appointment booking and triage across 12 locations.",
-    tags: ["LLM Integration", "Customer Support", "Automation"]
+    tags: ["LLM Integration", "Customer Support", "Automation"],
+    alt: "Webhouse Media AI business automation services - HealthTech Bot"
   }
 ];
 
@@ -73,7 +77,7 @@ const Portfolio: React.FC = () => {
               <div className="relative h-[400px] overflow-hidden">
                 <img 
                   src={project.image} 
-                  alt={project.title} 
+                  alt={project.alt} 
                   className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" 
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-transparent to-transparent opacity-60"></div>

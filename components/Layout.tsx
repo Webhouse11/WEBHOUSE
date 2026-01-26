@@ -32,6 +32,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const navLinks = [
     { label: 'Home', path: '/' },
     { label: 'Systems', path: '/services' },
+    { label: 'Business Software', path: '/services/saas-packages' },
     { label: 'Philosophy', path: '/about' },
     { label: 'Cases', path: '/portfolio' },
     { label: 'Contact', path: '/contact' },
@@ -147,6 +148,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                 <div className="md:col-span-3 space-y-10">
                     <h4 className="text-white text-[10px] font-black uppercase tracking-[0.4em]">Growth Pillars</h4>
                     <ul className="space-y-4 text-xs font-bold uppercase tracking-widest text-slate-500">
+                        <li><Link to="/services/saas-packages" className="hover:text-brand-accent transition-colors">Business Software</Link></li>
                         <li><Link to="/services/programming-ai" className="hover:text-indigo-400 transition-colors">Programming & AI</Link></li>
                         <li><Link to="/services/digital-sales" className="hover:text-indigo-400 transition-colors">Sales Funnels</Link></li>
                         <li><Link to="/services/storytelling" className="hover:text-rose-400 transition-colors">Storytelling</Link></li>

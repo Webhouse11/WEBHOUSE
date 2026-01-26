@@ -14,6 +14,7 @@ import DigitalSales from './pages/DigitalSales';
 import BrandingSystems from './pages/BrandingSystems';
 import SocialMediaSystems from './pages/SocialMediaSystems';
 import AuthorStorytelling from './pages/AuthorStorytelling';
+import SaaSPackages from './pages/SaaSPackages';
 import Services from './pages/Services';
 
 // Admin Pages
@@ -44,6 +45,7 @@ const AppRoutes: React.FC = () => {
         <Route path="/services/branding" element={<BrandingSystems />} />
         <Route path="/services/social-media" element={<SocialMediaSystems />} />
         <Route path="/services/storytelling" element={<AuthorStorytelling />} />
+        <Route path="/services/saas-packages" element={<SaaSPackages />} />
         <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
